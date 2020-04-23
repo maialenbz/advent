@@ -9,9 +9,9 @@ with open(filename) as file:
         element = line.rstrip()
         words.append(element)
 
-for word in words:
-    x = 0
-    y = x
+
+def compare(word, words):
+    y = x = 0
 
     while x < len(words):
         y += 1
@@ -32,13 +32,15 @@ for word in words:
                     break
                 c += 1
             if equals == (len(word_1)-1) and differents == 1:
-                final_word_1 = word_1
-                final_word_2 = word_2
                 answer = word_1[:position] + word_1[position+1:]
-                print(answer)
-                break
+                return answer
         if y == len(words):
             x += 1
             y = x
-    if equals == (len(word_1)-1) and differents == 1:
+
+
+for word in words:
+    answer = compare(word, words)
+    if answer is not None:
+        print(answer)
         break
