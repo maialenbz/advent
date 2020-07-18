@@ -17,44 +17,44 @@ def get_value(positions, coords):
 def location(coords, current, positions):
     x, y = coords
     # directions
-    # a = + x
-    # b = + y
-    # c = - x
-    # d = - y
-    # function location gets the current coords and returns the next ones, considering the rest of the coords completed up to moment.
-    if current == "a":
-        current = "b"
+    # right = + x
+    # up = + y
+    # left = - x
+    # down = - y
+    # function location gets the current coords and returns the next ones, considering the rest of the coords completed up to the moment.
+    if current == "right":
+        current = "up"
         x += 1
         coords = (x, y)
         if coords in positions:
-            current = "a"
+            current = "right"
             x -= 1
             y -= 1
             coords = (x, y)
-    elif current == "b":
-        current = "c"
+    elif current == "up":
+        current = "left"
         y += 1
         coords = (x, y)
         if coords in positions:
-            current = "b"
+            current = "up"
             y -= 1
             x += 1
             coords = (x, y)
-    elif current == "c":
-        current = "d"
+    elif current == "left":
+        current = "down"
         x -= 1
         coords = (x, y)
         if coords in positions:
-            current = "c"
+            current = "left"
             x += 1
             y += 1
             coords = (x, y)
-    elif current == "d":
-        current = "a"
+    elif current == "down":
+        current = "right"
         y -= 1
         coords = (x, y)
         if coords in positions:
-            current = "d"
+            current = "down"
             y += 1
             x -= 1
             coords = (x, y)
@@ -64,7 +64,7 @@ def location(coords, current, positions):
     return (coords, current)
 
 
-current = "a"
+current = "right"
 coords = (0, 0)
 positions = {coords: 1}
 
